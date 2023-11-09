@@ -1,0 +1,11 @@
+<table
+        name="More Enemies"
+        description="Readds the OG commander and more"
+        author="Mango"
+        contact="the payday 2 modding server on discord"
+        version="1.0">
+	<auto_updates provider="modworkshop" id="43427" version="1.01"/>
+	<hooks>
+		<hook source_file="lib/tweak_data/groupaitweakdata" file="groupaitweakdata.lua"/>
+	</hooks>
+</table>
