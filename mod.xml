@@ -7,5 +7,7 @@
 	<auto_updates provider="modworkshop" id="43427" version="1.01"/>
 	<hooks>
 		<hook source_file="lib/tweak_data/groupaitweakdata" file="groupaitweakdata.lua"/>
+		<hook source_file="lib/managers/group_ai_states/groupaistatebesiege" file="groupaistatebesiege.lua"/>
+		<hook source_file="lib/tweak_data/group_ai/groupairaidtweakdata" file="groupairaidtweakdata.lua"/>
 	</hooks>
 </table>

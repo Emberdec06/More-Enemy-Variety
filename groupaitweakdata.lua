@@ -1342,7 +1342,7 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups_german", "mev__init_e
 
 	self.enemy_spawn_groups.german.commanders = {
 		amount = {
-			1,
+			2,
 			2
 		},
 		spawn = {
@@ -1552,4 +1552,5 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups_german", "mev__init_e
 			}
 		}
 	}
+log("groups work")
 end)
