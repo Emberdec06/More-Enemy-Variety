@@ -3,8 +3,8 @@
         description="Readds the OG commander and more"
         author="Mango"
         contact="the payday 2 modding server on discord"
-        version="1.0">
-	<auto_updates provider="modworkshop" id="43427" version="1.02"/>
+        version="1.03">
+	<auto_updates provider="modworkshop" id="43427" version="1.03"/>
 	<hooks>
 		<hook source_file="lib/tweak_data/groupaitweakdata" file="groupaitweakdata.lua"/>
 		<hook source_file="lib/managers/group_ai_states/groupaistatebesiege" file="groupaistatebesiege.lua"/>

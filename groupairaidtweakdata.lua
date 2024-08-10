@@ -8,7 +8,5 @@ Hooks:PostHook(GroupAIRaidTweakData, "init", "mev__init", function(self,difficul
 		0,
 		0,
 		0
-	}
-
-end)
-
+	} 
+end) 

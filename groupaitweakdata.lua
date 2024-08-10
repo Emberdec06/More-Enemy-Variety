@@ -1,5 +1,13 @@
 Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups_german", "mev__init_enemy_spawn_groups_german", function(self, difficulty_index)
 	self.enemy_spawn_groups.german = {}
+	local amount_one = {
+		1,
+		1
+	}
+	local amount_four = {
+		4,
+		4
+	}
 	local amount_easy = {
 		2,
 		2
@@ -559,11 +567,13 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups_german", "mev__init_e
 			}
 		}
 	end
+	self.enemy_spawn_groups.german.gerbish_flankers = {
+		amount = amount_easy,
+		spawn = {}
+	}
 
 	if difficulty_index <= TweakData.DIFFICULTY_1 then
-		self.enemy_spawn_groups.german.gerbish_flankers = {
-			amount = amount_easy,
-			spawn = {
+		table.insert(self.enemy_spawn_groups.german.gerbish_flankers.spawn, {
 				{
 					rank = 3,
 					freq = 1,
@@ -583,14 +593,11 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups_german", "mev__init_e
 					amount_min = 2,
 					rank = 1,
 					unit = "german_grunt_light_mp38",
-					tactics = self._tactics.gerbish_flankers
+					tactics = self._tactics.gerbish_flankers	
 				}
-			}
-		}
+		})
 	elseif difficulty_index == TweakData.DIFFICULTY_2 then
-		self.enemy_spawn_groups.german.gerbish_flankers = {
-			amount = amount_norm,
-			spawn = {
+		table.insert(self.enemy_spawn_groups.german.gerbish_flankers.spawn, {
 				{
 					freq = 1,
 					amount_min = 0,
@@ -610,14 +617,11 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups_german", "mev__init_e
 					amount_min = 0,
 					rank = 1,
 					unit = "german_grunt_light_mp38",
-					tactics = self._tactics.gerbish_flankers
+					tactics = self._tactics.gerbish_flankers	
 				}
-			}
-		}
+		})
 	elseif difficulty_index == TweakData.DIFFICULTY_3 then
-		self.enemy_spawn_groups.german.gerbish_flankers = {
-			amount = amount_hard,
-			spawn = {
+		table.insert(self.enemy_spawn_groups.german.gerbish_flankers.spawn, {
 				{
 					freq = 1,
 					amount_min = 0,
@@ -639,12 +643,9 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups_german", "mev__init_e
 					unit = "german_gebirgsjager_heavy",
 					tactics = self._tactics.gerbish_flankers
 				}
-			}
-		}
+		})
 	elseif difficulty_index == TweakData.DIFFICULTY_4 then
-		self.enemy_spawn_groups.german.gerbish_flankers = {
-			amount = amount_vhrd,
-			spawn = {
+		table.insert(self.enemy_spawn_groups.german.gerbish_flankers.spawn, {
 				{
 					freq = 1,
 					amount_min = 2,
@@ -666,8 +667,7 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups_german", "mev__init_e
 					unit = "german_gebirgsjager_heavy_kar98",
 					tactics = self._tactics.gerbish_flankers
 				}
-			}
-		}
+		})
 	end
 
 	if difficulty_index <= TweakData.DIFFICULTY_1 then
@@ -1340,31 +1340,81 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups_german", "mev__init_e
 		}
 	}
 
-	self.enemy_spawn_groups.german.commanders = {
-		amount = {
-			2,
-			2
-		},
-		spawn = {
-			{
-				amount_min = 1,
-				freq = 1,
-				amount_max = 1,
-				rank = 2,
-				unit = "german_commander",
-				tactics = self._tactics.commander
-			},
-			{
-				amount_min = 1,
-				freq = 1,
-				amount_max = 1,
-				rank = 1,
-				unit = "german_og_commander",
-				tactics = self._tactics.commander
+	if difficulty_index <= TweakData.DIFFICULTY_2 then
+		self.enemy_spawn_groups.german.commanders = {
+			amount = amount_norm,
+			spawn = {
+				{
+					amount_min = 1,
+					freq = 1,
+					amount_max = 1,
+					rank = 1,
+					unit = "german_commander",
+					tactics = self._tactics.commander
+				},
+				{
+					amount_min = 2,
+					freq = 1,
+					amount_max = 2,
+					rank = 2,
+					unit = "german_light_commander_backup",
+					tactics = self._tactics.ss_flankers
+				}
 			}
 		}
-	}
-
+		if difficulty_index == TweakData.DIFFICULTY_3 then
+		self.enemy_spawn_groups.german.commanders = {
+			amount = amount_hard,
+			spawn = {
+				{
+					amount_min = 1,
+					freq = 1,
+					amount_max = 1,
+					rank = 1,
+					unit = "german_commander",
+					tactics = self._tactics.commander
+				},
+				{
+					amount_min = 1,
+					freq = 1,
+					amount_max = 0,
+					rank = 2,
+					unit = "german_light_commander_backup",
+					tactics = self._tactics.ss_flankers
+				},
+				{
+					amount_min = 1,
+					freq = 1,
+					amount_max = 1,
+					rank = 2,
+					unit = "german_heavy_commander_backup",
+					tactics = self._tactics.ss_flankers
+				}
+			}
+		}
+		if difficulty_index == TweakData.DIFFICULTY_4 then
+		self.enemy_spawn_groups.german.commanders = {
+			amount = amount_vhrd,
+			spawn = {
+				{
+					amount_min = 1,
+					freq = 1,
+					amount_max = 1,
+					rank = 1,
+					unit = "german_og_commander",
+					tactics = self._tactics.commander
+				},
+				{
+					amount_min = 2,
+					freq = 1,
+					amount_max = 0,
+					rank = 2,
+					unit = "german_heavy_commander_backup",
+					tactics = self._tactics.ss_flankers
+				}
+			}
+		}
+	end
 	if difficulty_index <= TweakData.DIFFICULTY_1 then
 		self.enemy_spawn_groups.german.commander_squad = {
 			amount = {
@@ -1376,14 +1426,14 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups_german", "mev__init_e
 					freq = 1,
 					amount_min = 1,
 					rank = 2,
-					unit = "german_gasmask_commander_backup",
+					unit = "german_light_commander_backup",
 					tactics = self._tactics.grunt_chargers
 				},
 				{
 					freq = 1,
 					amount_min = 1,
 					rank = 2,
-					unit = "german_gasmask_shotgun_backup",
+					unit = "german_light_commander_backup_shotgun",
 					tactics = self._tactics.grunt_chargers
 				}
 			}
@@ -1399,14 +1449,14 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups_german", "mev__init_e
 					freq = 2,
 					amount_min = 1,
 					rank = 2,
-					unit = "german_gasmask_commander_backup",
+					unit = "german_light_commander_backup",
 					tactics = self._tactics.grunt_chargers
 				},
 				{
 					freq = 2,
 					amount_min = 1,
 					rank = 2,
-					unit = "german_gasmask_shotgun_backup",
+					unit = "german_light_commander_backup_shotgun",
 					tactics = self._tactics.grunt_chargers
 				}
 			}
@@ -1433,14 +1483,14 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups_german", "mev__init_e
 					freq = 1,
 					amount_min = 0,
 					rank = 2,
-					unit = "german_gasmask_commander_backup",
+					unit = "german_heavy_commander_backup_kar98",
 					tactics = self._tactics.grunt_chargers
 				},
 				{
 					freq = 1,
 					amount_min = 0,
 					rank = 2,
-					unit = "german_gasmask_shotgun_backup",
+					unit = "german_heavy_commander_backup_shotgun",
 					tactics = self._tactics.grunt_chargers
 				}
 			}
@@ -1451,14 +1501,14 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups_german", "mev__init_e
 			spawn = {
 				{
 					freq = 2,
-					amount_min = 1,
+					amount_min = 0,
 					rank = 1,
 					unit = "german_heavy_commander_backup_shotgun",
 					tactics = self._tactics.gerbish_chargers
 				},
 				{
 					freq = 2,
-					amount_min = 1,
+					amount_min = 0,
 					rank = 1,
 					unit = "german_heavy_commander_backup_kar98",
 					tactics = self._tactics.gerbish_chargers
@@ -1479,14 +1529,14 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups_german", "mev__init_e
 				},
 				{
 					freq = 1,
-					amount_min = 0,
+					amount_min = 1,
 					rank = 1,
 					unit = "german_gasmask_commander_backup",
 					tactics = self._tactics.grunt_chargers
 				},
 				{
 					freq = 1,
-					amount_min = 0,
+					amount_min = 1,
 					rank = 1,
 					unit = "german_gasmask_shotgun_backup",
 					tactics = self._tactics.grunt_chargers

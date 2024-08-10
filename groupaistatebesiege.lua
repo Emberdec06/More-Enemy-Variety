@@ -30,7 +30,5 @@ function GroupAIStateBesiege:assign_enemy_to_group_ai(unit, team_id)
 	group.has_spawned = true
 
 	self:_add_group_member(group, unit:key())
-	self:set_enemy_assigned(area, unit:key())
-
-end
-
+	self:set_enemy_assigned(area, unit:key()) 
+end 
