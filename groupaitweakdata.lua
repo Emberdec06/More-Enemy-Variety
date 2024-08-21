@@ -1362,6 +1362,7 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups_german", "mev__init_e
 				}
 			}
 		}
+    end
 		if difficulty_index == TweakData.DIFFICULTY_3 then
 		self.enemy_spawn_groups.german.commanders = {
 			amount = amount_hard,
@@ -1392,6 +1393,7 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups_german", "mev__init_e
 				}
 			}
 		}
+    end
 		if difficulty_index == TweakData.DIFFICULTY_4 then
 		self.enemy_spawn_groups.german.commanders = {
 			amount = amount_vhrd,
